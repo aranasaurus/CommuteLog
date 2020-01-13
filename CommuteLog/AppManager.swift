@@ -108,9 +108,9 @@ extension AppManager: CommuteDetailsViewControllerEventHandler {
 
 extension AppManager: LocationWranglerDelegate {
     func wrangler(_ wrangler: LocationWrangler, didReceiveLocation location: Location) {
-        guard let details = detailsViewController, details.commute.isActive, let activeCommute = commuteManager.activeCommute else { return }
-
         DispatchQueue.main.async {
+            guard let details = self.detailsViewController, details.commute.isActive, let activeCommute = self.commuteManager.activeCommute else { return }
+
             details.updateCommute(activeCommute)
         }
     }
