@@ -63,7 +63,11 @@ class CommutesViewController: UIViewController {
             tableView.heightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.heightAnchor)
         ])
 
-        view.backgroundColor = .white
+        if #available(iOS 13.0, *) {
+            view.backgroundColor = .systemBackground
+        } else {
+            view.backgroundColor = .white
+        }
         updateNavButton()
     }
 
@@ -147,7 +151,11 @@ extension CommutesViewController: UITableViewDataSource {
         if commute.isActive {
             cell.backgroundColor = .green
         } else {
-            cell.backgroundColor = .white
+            if #available(iOS 13.0, *) {
+                cell.backgroundColor = .systemBackground
+            } else {
+                cell.backgroundColor = .white
+            }
         }
         return cell
     }
